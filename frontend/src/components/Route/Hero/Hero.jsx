@@ -18,10 +18,8 @@ const Hero = () => {
           Best Collection for <br /> home Decoration
         </h1>
         <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-          assumenda? Quisquam itaque <br /> exercitationem labore vel, dolore
-          quidem asperiores, laudantium temporibus soluta optio consequatur{" "}
-          <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
+        Home decor is the style of your home interiors and includes the items you use to decorate and personalise your house. For instance, if you like flowers, you can get carpets or cushion covers with floral prints. Or,<br/> if your interior design inspiration is more mid-century modern than contemporary, {" "}
+          <br /> you can buy appropriate home decor items for your place.
         </p>
         <Link to="/products" className="inline-block">
             <div className={`${styles.button} mt-5`}>

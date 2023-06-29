@@ -110,13 +110,14 @@ const Footer = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
          text-center pt-2 text-gray-400 text-sm pb-8"
       >
-        <span>© 2020 Becodemy. All rights reserved.</span>
+        <span>© 2023 Ecommerce Web-app. All rights reserved.</span>
         <span>Terms · Privacy Policy</span>
         <div className="sm:block flex items-center justify-center w-full">
           <img
-            src="https://hamart-shop.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffooter-payment.a37c49ac.png&w=640&q=75"
+            src="https://res.cloudinary.com/dc5tpvv6e/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1688016378/ecommerce_accepted_payment_gateway_p44qod.jpg?_s=public-apps"
             alt=""
           />
+          
         </div>
       </div>
     </div>

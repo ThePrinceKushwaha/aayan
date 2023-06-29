@@ -27,7 +27,7 @@ export const navItems = [
     {
       id: 1,
       title: "Free Shipping",
-      Description: "From all orders over 100$",
+      Description: "From all orders over RS.3000",
       icon: (
         <svg
           width="36"
@@ -205,7 +205,7 @@ export const navItems = [
     },
     {
       id: 3,
-      title: "Accesories",
+      title: "Electric and Accessories",
       subTitle: "",
       image_Url:
         "https://img.freepik.com/free-vector/ordering-goods-online-internet-store-online-shopping-niche-e-commerce-website-mother-buying-babies-clothes-footwear-toys-infant-accessories_335657-2345.jpg?w=2000",
