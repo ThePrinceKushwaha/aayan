@@ -187,4 +187,71 @@ router.get(
     }
   })
 );
+
+
+// product recommendation
+const userItemData = [
+  { userId: 1, itemId: 101 },
+  { userId: 1, itemId: 102 },
+  { userId: 2, itemId: 101 },
+  { userId: 2, itemId: 103 },
+];
+
+// Calculate user similarity (replace with your algorithm)
+
+function calculateUserSimilarity(userId1, userId2, userItemData) {
+  // Get the user-item interactions for each user
+  const interactions1 = userItemData.filter((interaction) => interaction.userId === userId1);
+  const interactions2 = userItemData.filter((interaction) => interaction.userId === userId2);
+
+  // Create sets of item IDs liked by each user
+  const likedItems1 = new Set(interactions1.map((interaction) => interaction.itemId));
+  const likedItems2 = new Set(interactions2.map((interaction) => interaction.itemId));
+
+  // Calculate the intersection (items liked by both users)
+  const intersection = Array.from(likedItems1).filter((itemId) => likedItems2.has(itemId));
+
+  // Calculate cosine similarity
+  const numerator = intersection.length;
+  const denominator = Math.sqrt(likedItems1.size) * Math.sqrt(likedItems2.size);
+
+  // Avoid division by zero and return a similarity score between 0 and 1
+  if (denominator === 0) {
+    return 0;
+  } else {
+    return numerator / denominator;
+  }
+}
+
+const userId1 = 1;
+const userId2 = 2;
+const similarity = calculateUserSimilarity(userId1, userId2, userItemData);
+console.log(`Cosine Similarity between User ${userId1} and User ${userId2}: ${similarity}`);
+
+// Generate recommendations for a user
+function generateRecommendations(userId) {
+  const userInteractions = userItemData.filter((interaction) => interaction.userId === userId);
+  const allUsers = Array.from(new Set(userItemData.map((interaction) => interaction.userId)));
+  const recommendations = new Set();
+
+  allUsers.forEach((otherUserId) => {
+    if (otherUserId !== userId) {
+      const similarity = calculateUserSimilarity(userId, otherUserId);
+
+      if (similarity > 0.5) {
+        // Find items liked by otherUserId but not by userId
+        const otherUserInteractions = userItemData.filter((interaction) => interaction.userId === otherUserId);
+        otherUserInteractions.forEach((interaction) => {
+          if (!userInteractions.some((i) => i.itemId === interaction.itemId)) {
+            recommendations.add(interaction.itemId);
+          }
+        });
+      }
+    }
+  });
+
+  return Array.from(recommendations);
+}
+
+
 module.exports = router;
